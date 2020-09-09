@@ -1,0 +1,35 @@
+name = "faucet"
+is_auth = true
+is_admin = false
+frontend = "/faucet"
+
+[[static_dirs]]
+name = "frontend"
+path_url = ""
+path_location = "frontend/"
+index = "index.html"
+spa = true
+
+[[bottle_servers]]
+name = "main"
+file_path = "bottle/faucet_api.py"
+path_url = "/api/"
+path_dest = "/api/"
+host = "0.0.0.0"
+port = 5555
+
+
+[[servers]]
+name = "faucet_root_proxy"
+domain = "tftfaucet.grid.tf"
+letsencryptemail = "tarekr@incubaid.com"
+includes = ["default_443.chatflows_*", "default_443.auth_*", "default_443.marketplace*"]
+
+[[servers.locations]]
+name = "custom"
+type = "custom"
+custom_config = """
+location / {
+   rewrite ^(.+) /faucet;
+}
+"""
