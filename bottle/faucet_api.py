@@ -12,7 +12,7 @@ from jumpscale.packages.auth.bottle.auth import SESSION_OPTS, get_user_info, log
 app = Bottle()
 
 FAUCET_WALLET = "faucet_wallet"
-TRANSFER_AMOUNT = 10000
+TRANSFER_AMOUNT = 1000
 
 
 @app.route("/api/transfer", method="POST")
