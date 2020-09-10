@@ -1,5 +1,5 @@
 name = "faucet"
-is_auth = true
+is_auth = false
 is_admin = false
 frontend = "/tft_faucet"
 

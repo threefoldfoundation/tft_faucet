@@ -18,6 +18,7 @@
               :rules="rules"
               hide-details="auto"
             ></v-text-field>
+            <p v-if="success" id="errortext">Success</p>
             <p
               v-if="error"
               id="errortext"
@@ -57,12 +58,14 @@ module.exports = {
     fundAddress() {
       this.loading = true;
       this.error = false;
+      this.success = false;
 
       this.$api
         .fundAccount(this.address)
         .then((res) => {
           if (res.status == 200) {
             this.loading = false;
+            this.success = true;
             // this.$toasted.success("Address funded successfully")
           } else {
             this.error = true;
@@ -81,6 +84,9 @@ module.exports = {
 <style scoped>
 #errortext {
   color: red;
+}
+#suceesstext {
+  color: green;
 }
 #inspire {
   width: 1200px;
