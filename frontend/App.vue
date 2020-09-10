@@ -9,39 +9,41 @@
           <v-container class="fill-height" fluid>
             <v-row align="center" justify="center">
               <v-col cols="3" sm="4" md="6" lg="12">
-                <v-img class="logo" src="./assets/faucet-logo.png" />
+                <!-- <v-img class="logo" src="./assets/faucet-logo.png" /> -->
                 <div class="header">
                   <h1>Get TFT's</h1>
                 </div>
-                <div class="content">
-                  <div class>
-                    <v-text-field
-                      v-model="address"
-                      label="Enter Stellar address here"
-                      :rules="rules"
-                      hide-details="auto"
-                    ></v-text-field>
-                    <p
-                      v-if="error"
-                      id="errortext"
-                    >This address probably does not exist or does not have a trustline with the issuer of our Stellar TFT. Or this address might already have requested tokens before!</p>
-                  </div>
-                  <br />
-                  <br />
-                  <p>Enter a valid Stellar address to receive TFT, this address must have a trustline to the TFT issuer! You will only be able to receive tokens once.</p>
-                  <br />
-                  <br />
-                  <v-btn
-                    outlined
-                    color="#333333"
-                    class="ma-2"
-                    :loading="loading"
-                    :disabled="loading || address === ''"
-                    v-on:click="fundAddress()"
-                  >Receive your TFT</v-btn>
-                </div>
               </v-col>
             </v-row>
+          </v-container>
+          <v-container>
+            <div class="content">
+              <div class>
+                <v-text-field
+                  v-model="address"
+                  label="Enter Stellar address here"
+                  :rules="rules"
+                  hide-details="auto"
+                ></v-text-field>
+                <p
+                  v-if="error"
+                  id="errortext"
+                >This address probably does not exist or does not have a trustline with the issuer of our Stellar TFT. Or this address might already have requested tokens before!</p>
+              </div>
+              <br />
+              <br />
+              <p>Enter a valid Stellar address to receive TFT, this address must have a trustline to the TFT issuer! You will only be able to receive tokens once.</p>
+              <br />
+              <br />
+              <v-btn
+                outlined
+                color="#333333"
+                class="ma-2"
+                :loading="loading"
+                :disabled="loading || address === ''"
+                v-on:click="fundAddress()"
+              >Receive your TFT</v-btn>
+            </div>
           </v-container>
         </v-layout>
       </v-layout>
