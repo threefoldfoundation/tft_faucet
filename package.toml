@@ -1,7 +1,7 @@
 name = "faucet"
 is_auth = true
 is_admin = false
-frontend = "/faucet"
+frontend = "/tft_faucet"
 
 [[static_dirs]]
 name = "frontend"
@@ -23,13 +23,13 @@ port = 6000
 name = "faucet_root_proxy"
 domain = "gettft.testnet.grid.tf"
 letsencryptemail = "tarekr@incubaid.com"
-includes = ["default_443.chatflows_*", "default_443.auth_*", "default_443.faucet*"]
+includes = ["default_443.chatflows_*", "default_443.auth_*", "default_443.tft_faucet*"]
 
 [[servers.locations]]
 name = "custom"
 type = "custom"
 custom_config = """
 location / {
-   rewrite ^(.+) /faucet;
+   rewrite ^(.+) /tft_faucet;
 }
 """
