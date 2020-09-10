@@ -18,7 +18,7 @@
               :rules="rules"
               hide-details="auto"
             ></v-text-field>
-            <p v-if="success" id="errortext">Success</p>
+            <p v-if="success" id="suceesstext">Success</p>
             <p
               v-if="error"
               id="errortext"
