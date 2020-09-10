@@ -16,10 +16,7 @@ TRANSFER_AMOUNT = 10000
 
 
 @app.route("/api/transfer", method="POST")
-@login_required
 def transfer() -> str:
-    user_info = j.data.serializers.json.loads(get_user_info())
-    tname = user_info["username"]
 
     request_data = j.data.serializers.json.loads(request.body.read())
     destination = request_data["destination"]
@@ -30,12 +27,12 @@ def transfer() -> str:
     import nacl
     from nacl import hash
 
-    hashed_tname = hash.blake2b(tname.encode("utf-8"), encoder=nacl.encoding.RawEncoder)
+    hashed_wallet = hash.blake2b(destination.encode("utf-8"), encoder=nacl.encoding.RawEncoder)
     txes = distributor_wallet.list_transactions(address=destination)
     for tx in txes:
         if tx.memo_hash is not None:
             decoded_memo_hash = base64.b64decode(tx.memo_hash)
-            if decoded_memo_hash == hashed_tname:
+            if decoded_memo_hash == hashed_wallet:
                 raise j.exceptions.Base("user already requested tokens")
 
     try:
@@ -43,7 +40,7 @@ def transfer() -> str:
             destination_address=destination,
             amount=TRANSFER_AMOUNT,
             asset=f"{asset.code}:{asset.issuer}",
-            memo_hash=hashed_tname,
+            memo_hash=hashed_wallet,
         )
     except Exception as e:
         raise j.exceptions.Base(e)
