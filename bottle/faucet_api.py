@@ -11,8 +11,8 @@ from jumpscale.packages.auth.bottle.auth import SESSION_OPTS, get_user_info, log
 
 app = Bottle()
 
-FAUCET_WALLET = "my_wallet"  # change to "faucet_wallet"
-TRANSFER_AMOUNT = 1  # TODO change to 10000
+FAUCET_WALLET = "faucet_wallet"
+TRANSFER_AMOUNT = 10000
 
 
 @app.route("/api/transfer", method="POST")
