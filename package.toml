@@ -21,9 +21,9 @@ port = 6000
 
 [[servers]]
 name = "faucet_root_proxy"
-domain = "tftfaucet.grid.tf"
+domain = "gettft.testnet.grid.tf"
 letsencryptemail = "tarekr@incubaid.com"
-includes = ["default_443.chatflows_*", "default_443.auth_*", "default_443.marketplace*"]
+includes = ["default_443.chatflows_*", "default_443.auth_*", "default_443.faucet*"]
 
 [[servers.locations]]
 name = "custom"
