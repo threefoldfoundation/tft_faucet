@@ -51,6 +51,7 @@ module.exports = {
       address: "",
       loading: false,
       rules: [],
+      success: false,
     };
   },
 
